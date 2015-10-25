@@ -34,13 +34,7 @@ public class MovieGrid extends Fragment {
 
         // Inflate the layout for this fragment
         GridView gridView = (GridView)inflater.inflate(R.layout.fragment_movie_grid, container, false);
-
-//        String[] mockStringData = {"toto", "titi", "tata", "tutu", "toutou"};
-//        // set gridView adapter
-//        ArrayAdapter<String> movieAdapter = new ArrayAdapter<>(getActivity(), R.layout.textview_listitem,
-//                mockStringData);
         gridView.setAdapter(new ThumbnailAdapter(getActivity()));
-
         return gridView;
     }
 
