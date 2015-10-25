@@ -8,10 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by zao on 24/10/15.
- */
-public class ImageAdapter extends BaseAdapter {
+
+public class ThumbnailAdapter extends BaseAdapter {
 
     private Context context;
     private final String LOG_TAG = this.getClass().getSimpleName();
@@ -20,10 +18,12 @@ public class ImageAdapter extends BaseAdapter {
         R.drawable.sample_0, R.drawable.sample_1,
         R.drawable.sample_2, R.drawable.sample_3,
         R.drawable.sample_4, R.drawable.sample_5,
-        R.drawable.sample_6, R.drawable.sample_7
+        R.drawable.sample_6, R.drawable.sample_7,
+        R.drawable.sample_8, R.drawable.sample_9,
+        R.drawable.sample_10
     };
 
-    public ImageAdapter(Context context) {
+    public ThumbnailAdapter(Context context) {
         super();
         this.context = context;
     }

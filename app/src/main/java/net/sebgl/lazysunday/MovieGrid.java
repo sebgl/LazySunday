@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 
@@ -41,7 +39,7 @@ public class MovieGrid extends Fragment {
 //        // set gridView adapter
 //        ArrayAdapter<String> movieAdapter = new ArrayAdapter<>(getActivity(), R.layout.textview_listitem,
 //                mockStringData);
-        gridView.setAdapter(new ImageAdapter(getActivity()));
+        gridView.setAdapter(new ThumbnailAdapter(getActivity()));
 
         return gridView;
     }
