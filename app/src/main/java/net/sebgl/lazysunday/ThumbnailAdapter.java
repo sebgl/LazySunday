@@ -8,29 +8,45 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class ThumbnailAdapter extends BaseAdapter {
 
     private Context context;
     private final String LOG_TAG = this.getClass().getSimpleName();
 
-    private static final int[] mockThumbnailsId = {
-        R.drawable.sample_0, R.drawable.sample_1,
-        R.drawable.sample_2, R.drawable.sample_3,
-        R.drawable.sample_4, R.drawable.sample_5,
-        R.drawable.sample_6, R.drawable.sample_7,
-        R.drawable.sample_8, R.drawable.sample_9,
-        R.drawable.sample_10
-    };
+    private List<MovieInfo> movies;
 
     public ThumbnailAdapter(Context context) {
         super();
         this.context = context;
+        this.fillWithMockData();
+    }
+
+    private void fillWithMockData(){
+        movies = new ArrayList<MovieInfo>();
+        final MovieInfo[] movieArray = {
+                new MovieInfo(R.drawable.sample_0, "Jurassic World"),
+                new MovieInfo(R.drawable.sample_1, "Seul sur Mars"),
+                new MovieInfo(R.drawable.sample_2, "Interstellar"),
+                new MovieInfo(R.drawable.sample_3, "Terminator"),
+                new MovieInfo(R.drawable.sample_4, "Vice Versa"),
+                new MovieInfo(R.drawable.sample_5, "San Andreas"),
+                new MovieInfo(R.drawable.sample_6, "A la poursuite de demain"),
+                new MovieInfo(R.drawable.sample_7, "Pixels"),
+                new MovieInfo(R.drawable.sample_8, "Mad Max"),
+                new MovieInfo(R.drawable.sample_9, "Les Minions"),
+                new MovieInfo(R.drawable.sample_10, "Ant-Man")
+        };
+        movies = Arrays.asList(movieArray);
     }
 
     @Override
     public int getCount() {
-        return mockThumbnailsId.length;
+        return movies.size();
     }
 
     @Override
@@ -55,8 +71,8 @@ public class ThumbnailAdapter extends BaseAdapter {
         }
         ImageView movieImageView = (ImageView)movieItem.findViewById(R.id.movieImageView);
         TextView movieTextView = (TextView)movieItem.findViewById(R.id.movieTextView);
-        movieImageView.setImageResource(mockThumbnailsId[position]);
-        movieTextView.setText(""+position);
+        movieImageView.setImageResource(movies.get(position).getImageId());
+        movieTextView.setText(movies.get(position).getMovieTitle());
         return movieItem;
     }
 }
