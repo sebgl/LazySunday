@@ -2,13 +2,20 @@ package net.sebgl.lazysunday.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
 import net.sebgl.lazysunday.R;
+import net.sebgl.lazysunday.bgtask.FetchMoviesTask;
 import net.sebgl.lazysunday.movie.MovieInfoAdapter;
+import net.sebgl.lazysunday.provider.MovieInfoProvider;
+import net.sebgl.lazysunday.provider.TheMovieDbProvider;
 
 
 /**
@@ -21,6 +28,8 @@ import net.sebgl.lazysunday.movie.MovieInfoAdapter;
  */
 public class MovieGrid extends Fragment {
 
+    private static final String LOG_TAG = MovieGrid.class.getName();
+    private MovieInfoAdapter movieInfoAdapter;
 
     public MovieGrid() {
         // Required empty public constructor
@@ -29,6 +38,7 @@ public class MovieGrid extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -37,11 +47,33 @@ public class MovieGrid extends Fragment {
 
         // Inflate the layout for this fragment
         GridView gridView = (GridView)inflater.inflate(R.layout.fragment_movie_grid, container, false);
-        gridView.setAdapter(new MovieInfoAdapter(getActivity()));
+        movieInfoAdapter = new MovieInfoAdapter(getActivity());
+        gridView.setAdapter(movieInfoAdapter);
         return gridView;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        inflater.inflate(R.menu.moviegrid, menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_refresh) {
+            updateMovies();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void updateMovies(){
+        MovieInfoProvider provider = new TheMovieDbProvider(getString(R.string.apikey_themoviedb));
+        new FetchMoviesTask(movieInfoAdapter).execute(provider);
+    }
 
 
 

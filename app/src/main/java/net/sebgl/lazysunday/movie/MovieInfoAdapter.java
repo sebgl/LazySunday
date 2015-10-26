@@ -28,8 +28,12 @@ public class MovieInfoAdapter extends BaseAdapter {
         this.fillWithMockData();
     }
 
+    public List<MovieInfo> getMovies(){
+        return movies;
+    }
+
     private void fillWithMockData(){
-        movies = new ArrayList<MovieInfo>();
+        movies = new ArrayList<>();
         final MovieInfo[] movieArray = {
                 new MovieInfo(R.drawable.sample_0, "Jurassic World"),
                 new MovieInfo(R.drawable.sample_1, "Seul sur Mars"),
@@ -43,7 +47,7 @@ public class MovieInfoAdapter extends BaseAdapter {
                 new MovieInfo(R.drawable.sample_9, "Les Minions"),
                 new MovieInfo(R.drawable.sample_10, "Ant-Man")
         };
-        movies = Arrays.asList(movieArray);
+        movies = new ArrayList<>(Arrays.asList(movieArray));
     }
 
     @Override
