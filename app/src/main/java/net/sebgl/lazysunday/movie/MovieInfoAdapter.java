@@ -1,4 +1,4 @@
-package net.sebgl.lazysunday;
+package net.sebgl.lazysunday.movie;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,19 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.sebgl.lazysunday.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class ThumbnailAdapter extends BaseAdapter {
+public class MovieInfoAdapter extends BaseAdapter {
 
     private Context context;
     private final String LOG_TAG = this.getClass().getSimpleName();
 
     private List<MovieInfo> movies;
 
-    public ThumbnailAdapter(Context context) {
+    public MovieInfoAdapter(Context context) {
         super();
         this.context = context;
         this.fillWithMockData();

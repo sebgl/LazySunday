@@ -10,7 +10,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="net.sebgl.lazysunday.MovieGrid"
+        android:name="net.sebgl.lazysunday.fragment.MovieGrid"
         android:id="@+id/movie_grid_fragment"
         tools:layout="@layout/fragment_movie_grid" />
 

@@ -1,4 +1,4 @@
-package net.sebgl.lazysunday;
+package net.sebgl.lazysunday.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+
+import net.sebgl.lazysunday.R;
+import net.sebgl.lazysunday.movie.MovieInfoAdapter;
 
 
 /**
@@ -34,7 +37,7 @@ public class MovieGrid extends Fragment {
 
         // Inflate the layout for this fragment
         GridView gridView = (GridView)inflater.inflate(R.layout.fragment_movie_grid, container, false);
-        gridView.setAdapter(new ThumbnailAdapter(getActivity()));
+        gridView.setAdapter(new MovieInfoAdapter(getActivity()));
         return gridView;
     }
 

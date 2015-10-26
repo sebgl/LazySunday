@@ -1,6 +1,4 @@
-package net.sebgl.lazysunday;
-
-import android.graphics.Movie;
+package net.sebgl.lazysunday.movie;
 
 public class MovieInfo {
 
