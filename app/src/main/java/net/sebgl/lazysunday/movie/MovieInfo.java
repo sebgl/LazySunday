@@ -2,16 +2,16 @@ package net.sebgl.lazysunday.movie;
 
 public class MovieInfo {
 
-    private int imageId;
+    private String imageUrl;
     private String movieTitle;
 
-    public MovieInfo(int imageId, String title){
-        this.imageId = imageId;
+    public MovieInfo(String imageUrl, String title){
         this.movieTitle = title;
+        this.imageUrl = imageUrl;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getMovieTitle() {

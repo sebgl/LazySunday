@@ -9,9 +9,7 @@ import net.sebgl.lazysunday.provider.MovieInfoProvider;
 
 import java.util.List;
 
-/**
- * Created by zao on 26/10/15.
- */
+
 public class FetchMoviesTask extends AsyncTask<MovieInfoProvider, String, List<MovieInfo>> {
 
         private final String LOG_TAG = this.getClass().getSimpleName();
@@ -35,6 +33,10 @@ public class FetchMoviesTask extends AsyncTask<MovieInfoProvider, String, List<M
         protected void onPostExecute(List<MovieInfo> movies) {
             if (adapter != null){
                 List<MovieInfo> moviesFromAdapter = adapter.getMovies();
+                if (movies.size() > 0){
+                    // clear the existing movies only if we can replace them
+                    moviesFromAdapter.clear();
+                }
                 for (MovieInfo movie: movies){
                     moviesFromAdapter.add(movie);
                 }

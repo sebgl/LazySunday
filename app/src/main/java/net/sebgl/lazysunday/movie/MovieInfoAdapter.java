@@ -8,10 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import net.sebgl.lazysunday.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -25,29 +26,11 @@ public class MovieInfoAdapter extends BaseAdapter {
     public MovieInfoAdapter(Context context) {
         super();
         this.context = context;
-        this.fillWithMockData();
+        this.movies = new ArrayList<>();
     }
 
     public List<MovieInfo> getMovies(){
         return movies;
-    }
-
-    private void fillWithMockData(){
-        movies = new ArrayList<>();
-        final MovieInfo[] movieArray = {
-                new MovieInfo(R.drawable.sample_0, "Jurassic World"),
-                new MovieInfo(R.drawable.sample_1, "Seul sur Mars"),
-                new MovieInfo(R.drawable.sample_2, "Interstellar"),
-                new MovieInfo(R.drawable.sample_3, "Terminator"),
-                new MovieInfo(R.drawable.sample_4, "Vice Versa"),
-                new MovieInfo(R.drawable.sample_5, "San Andreas"),
-                new MovieInfo(R.drawable.sample_6, "A la poursuite de demain"),
-                new MovieInfo(R.drawable.sample_7, "Pixels"),
-                new MovieInfo(R.drawable.sample_8, "Mad Max"),
-                new MovieInfo(R.drawable.sample_9, "Les Minions"),
-                new MovieInfo(R.drawable.sample_10, "Ant-Man")
-        };
-        movies = new ArrayList<>(Arrays.asList(movieArray));
     }
 
     @Override
@@ -77,7 +60,7 @@ public class MovieInfoAdapter extends BaseAdapter {
         }
         ImageView movieImageView = (ImageView)movieItem.findViewById(R.id.movieImageView);
         TextView movieTextView = (TextView)movieItem.findViewById(R.id.movieTextView);
-        movieImageView.setImageResource(movies.get(position).getImageId());
+        Picasso.with(context).load(movies.get(position).getImageUrl()).into(movieImageView);
         movieTextView.setText(movies.get(position).getMovieTitle());
         return movieItem;
     }

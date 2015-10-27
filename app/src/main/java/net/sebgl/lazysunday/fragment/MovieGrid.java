@@ -49,6 +49,8 @@ public class MovieGrid extends Fragment {
         GridView gridView = (GridView)inflater.inflate(R.layout.fragment_movie_grid, container, false);
         movieInfoAdapter = new MovieInfoAdapter(getActivity());
         gridView.setAdapter(movieInfoAdapter);
+        // first time update
+        updateMovies();
         return gridView;
     }
 
