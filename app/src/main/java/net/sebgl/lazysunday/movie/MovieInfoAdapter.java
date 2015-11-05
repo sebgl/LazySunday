@@ -40,7 +40,7 @@ public class MovieInfoAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return movies.get(position);
     }
 
     @Override

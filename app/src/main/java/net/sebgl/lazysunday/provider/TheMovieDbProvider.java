@@ -63,9 +63,11 @@ public class TheMovieDbProvider implements MovieInfoProvider {
     private MovieInfo MovieInfoFromServerJSONMovie(JSONObject serverResponse)
         throws JSONException {
         String title = serverResponse.getString("original_title");
+        String description = serverResponse.getString("overview");
+        Log.v(LOG_TAG, description);
         String posterPath = serverResponse.getString("poster_path");
         String posterFullUrl = buildPosterFullURL(posterPath).toString();
-        MovieInfo movieInfo = new MovieInfo(posterFullUrl, title);
+        MovieInfo movieInfo = new MovieInfo(posterFullUrl, title, description);
         return movieInfo;
     }
 
